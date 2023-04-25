@@ -1,18 +1,23 @@
 import React, { Component } from 'react';
 import './App.css'
-import Circle from './Circle';
+import Circle from './components/Circle';
+import Lives from './components/Lives';
 import img007 from './assets/007.png'
 import twoShooting from './assets/twoShooting.png'
 import fromRussia from './assets/fromRussia.webp'
 import twoStanding from './assets/twoStanding.png'
 import topSecret from './assets/topSecret.png'
+import alive from './assets/alive.png'
+import dead from './assets/dead.png'
 
 class App extends Component {
 
   state={
     circles: [1,2,3,4],
+    lives_images: [1,2,3],
+    lives_left: 2,
   }
-
+  
   render() {
     return (
       <div className='body'>
@@ -29,9 +34,12 @@ class App extends Component {
         <div id="livesBox">
           LIVES
           <div id="livesDisplay">
-            <img className="lives" id="live1" alt="alive"/>
-            <img className="lives" id="live2" alt="alive"/>
-            <img className="lives" id="live3" alt="alive"/>
+            {this.state.lives_images.map((live)=>
+              <Lives
+                id={live}
+                condition={ live <= this.state.lives_left }     
+              />
+            )}
           </div>
         </div>
         <div className="verticalLine"></div>
