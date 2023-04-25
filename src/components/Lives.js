@@ -5,7 +5,7 @@ import dead from '../assets/dead.png'
 
 const Lives = (props) => {
   return (
-    <img className='lives' src={props.condition ? alive: dead} alt={props.condition}/>
+    <img className='lives' src={props.alive_status ? alive : dead} alt="lives"/>
   );
 };
 

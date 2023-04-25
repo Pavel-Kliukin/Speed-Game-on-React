@@ -7,15 +7,16 @@ import twoShooting from './assets/twoShooting.png'
 import fromRussia from './assets/fromRussia.webp'
 import twoStanding from './assets/twoStanding.png'
 import topSecret from './assets/topSecret.png'
-import alive from './assets/alive.png'
-import dead from './assets/dead.png'
 
 class App extends Component {
 
   state={
     circles: [1,2,3,4],
     lives_images: [1,2,3],
-    lives_left: 2,
+    lives_left: 3,
+    score: 0,
+    hlCircleNumber: 0,
+    pace: 1300
   }
   
   render() {
@@ -34,10 +35,10 @@ class App extends Component {
         <div id="livesBox">
           LIVES
           <div id="livesDisplay">
-            {this.state.lives_images.map((live)=>
+            {this.state.lives_images.map((live_img_number)=>
               <Lives
-                id={live}
-                condition={ live <= this.state.lives_left }     
+                key={live_img_number}
+                alive_status={ this.state.lives_images.length-live_img_number < this.state.lives_left }
               />
             )}
           </div>
@@ -59,7 +60,7 @@ class App extends Component {
           <div id="sounds">
             Sounds:{'\u00A0'}
             <label className="switch">
-              <input id="soundButton" type="checkbox" checked/>
+              <input id="soundButton" type="checkbox" defaultChecked/>
               <span className="slider"></span>
             </label>
           </div>
@@ -68,7 +69,8 @@ class App extends Component {
       <div id="circles_block">
         {this.state.circles.map((circle)=>
         <Circle
-        number={circle}
+          key={circle}
+          number={circle}
         />
         )}
       </div>
