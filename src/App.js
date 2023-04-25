@@ -9,7 +9,9 @@ import topSecret from './assets/topSecret.png'
 
 class App extends Component {
 
-  const circles = 
+  state={
+    circles: [1,2,3,4],
+  }
 
   render() {
     return (
@@ -56,10 +58,11 @@ class App extends Component {
         </div>
       </div>
       <div id="circles_block">
-        <Circle/>
-        <Circle/>
-        <Circle/>
-        <Circle/>
+        {this.state.circles.map((circle)=>
+        <Circle
+        number={circle}
+        />
+        )}
       </div>
       <div id="start_stop_button_block">
         <button id="startButton">Start mission</button>
