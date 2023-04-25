@@ -170,6 +170,26 @@ input:checked+.slider:before {
   margin: 2rem;
 }
 
+/* BUTTONS */
+#start_stop_button_block {
+  display: flex;
+  justify-content: center;
+}
+
+button {
+  height: 3rem;
+  width: 10rem;
+  border-radius: 5px;
+  font-size: 1.2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hidenButton {
+  display: none;
+}
+
 /* FOOTER */
 footer {
   background-color: var(--color-red);
