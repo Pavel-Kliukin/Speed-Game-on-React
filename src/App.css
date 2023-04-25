@@ -186,10 +186,6 @@ button {
   align-items: center;
 }
 
-.hidenButton {
-  display: none;
-}
-
 /* FOOTER */
 footer {
   background-color: var(--color-red);
@@ -244,4 +240,15 @@ footer {
   padding-right: 1rem;
   margin-bottom: 1rem;
   object-fit: contain;
+}
+
+/* CIRCLES CLICK PREVENTER */
+.circlesClickPreventer {
+  position: fixed;
+  background-color: aquamarine;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  opacity: 50%;
 }
