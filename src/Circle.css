@@ -1,0 +1,8 @@
+.circles {
+  background-image: url("./assets/empty.jpg");
+  background-size: cover;
+  height: 12.2vw;
+  width: 19vw;
+  border: none;
+  margin: 1rem;
+}
