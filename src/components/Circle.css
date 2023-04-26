@@ -1,4 +1,4 @@
-.circles {
+.circle {
   background-image: url("../assets/empty.jpg");
   background-size: cover;
   height: 12.2vw;
@@ -7,14 +7,18 @@
   margin: 1rem;
 }
 
-.circles.stand {
+.circle.stand {
   background-image: url("../assets/stand.jpg");
 }
 
-.circles.shot {
+.circle.aim {
+  background-image: url("../assets/aim.jpg");
+}
+
+.circle.shot {
   background-image: url("../assets/kill.jpg");
 }
 
-.circles.enemyKilled {
+.circle.enemyKilled {
   background-image: url("../assets/enemyKilled.jpg");
 }

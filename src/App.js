@@ -2,56 +2,89 @@ import React, { Component } from 'react';
 import './App.css'
 import Circle from './components/Circle';
 import Lives from './components/Lives';
+
+// Images imports
 import img007 from './assets/007.png'
 import twoShooting from './assets/twoShooting.png'
 import fromRussia from './assets/fromRussia.webp'
 import twoStanding from './assets/twoStanding.png'
 import topSecret from './assets/topSecret.png'
 
-function highliteCircle (prevHlCircleNumber) {
-  const randomNumber = Math.floor(Math.random() * 4 + 1)
-  if (prevHlCircleNumber === randomNumber) { // if random number is equal to the number of already highlighted circle
-    highliteCircle(prevHlCircleNumber) // then we choose another random number
-  } else {
-    return randomNumber
-  }
-}
-
 class App extends Component {
 
   state={
     circles: [1,2,3,4],
     lives_images: [1,2,3],
-    start_button: true,
-    abort_button: false,
+    buttons_switcher: true, // switches Start and Abort buttons
     circlesClickPreventer: false,
     lives_left: 3,
     score: 0,
-    hlCircleNumber: 0,
+    activeCircle: 0,
+    activeClass: 'circle',
     pace: 1300
   }
+
+  timerAim
+  timerShot
+
+  newRound = () => {
+    if (this.state.lives_left === 0) {
+      return this.stopGame()
+    }
+
+    let randomNumber
+    do {randomNumber = Math.floor(Math.random() * this.state.circles.length + 1)}
+    while (this.state.activeCircle === randomNumber)
+
+    this.setState({
+      circlesClickPreventer: false,
+      activeCircle: randomNumber,
+      activeClass: 'circle stand'
+    })
+
+    this.timerAim = setTimeout(() => {
+      this.setState({
+        activeClass: 'circle aim'
+      })
+    }, this.state.pace / 2)
+
+    this.timerShot = setTimeout(() => {
+      this.deadState()
+      this.setState({
+        activeClass: 'circle shot'
+      })
+    }, this.state.pace)
+  }
+
+  deadState = () => {
+    this.setState({
+      circlesClickPreventer: true,
+      lives_left: this.state.lives_left - 1,
+      pace: this.state.pace - 30
+    })
+
+    setTimeout(() => {
+      this.setState({
+        activeClass: 'circle'
+      })
+      this.newRound()
+    }, 1000)
+  }
+  
+  startGame = () => {
+    this.setState({
+      buttons_switcher: !this.state.buttons_switcher,
+    })
+    
+    this.newRound()
+  }
+
   stopGame = () => {
+    clearTimeout(this.timerAim)
+    clearTimeout(this.timerShot)
     this.setState({
       circlesClickPreventer: true
     })
-  }
-
-  newRound = (prevState) => {
-    this.setState({
-      circlesClickPreventer: false,
-      start_button: false,
-      abort_button: true,
-      hlCircleNumber: highliteCircle(prevState.hlCircleNumber),
-      pace: prevState.pace - 30   
-    })
-
-    let timerAim = setTimeout(() => {
-      console.log('timer');
-    }, this.pace / 2)
-
-    clearTimeout(timerAim)
-
-    
   }
   
   render() {
@@ -80,13 +113,12 @@ class App extends Component {
             </div>
             <div className="verticalLine"></div>
             <div id="score">
-              Score:{'\u00A0'} {/* \u00A0 is for a space like &nbsp */}
-              <span id="scoreIs">0</span>
+              Score: {this.state.score}
             </div>
             <div className="verticalLine"></div>
             <div id="soundsControl">
               <div id="music">
-                Music:{'\u00A0'}
+                Music:{'\u00A0'} {/* \u00A0 is for a space like &nbsp */}
                 <label className="switch">
                   <input id="musicButton" type="checkbox"/>
                   <span className="slider"></span>
@@ -103,15 +135,15 @@ class App extends Component {
           </div>
           <div id="circles_block">
             {this.state.circles.map((circle)=> {
-              if (circle === this.state.hlCircleNumber) {
+              if (circle === this.state.activeCircle) {
                 return <Circle
                   key={circle}
-                  classes = 'circles stand'
+                  classes = {this.state.activeClass}
                 />
               } else {
                 return <Circle
                   key={circle}
-                  classes = 'circles'
+                  classes = 'circle'
                 />
               }
 
@@ -119,8 +151,7 @@ class App extends Component {
             })}
           </div>
           <div id="start_stop_button_block">
-            {this.state.start_button && <button onClick={this.newRound}>Start mission</button>}
-            {this.state.abort_button && <button onClick={this.stopGame}>Abort mission</button>}
+            {this.state.buttons_switcher ? <button onClick={this.startGame}>Start mission</button> : <button onClick={this.stopGame}>Abort mission</button>}
           </div>
         </main>
         <footer>
