@@ -6,3 +6,15 @@
   border: none;
   margin: 1rem;
 }
+
+.circles.stand {
+  background-image: url("../assets/stand.jpg");
+}
+
+.circles.shot {
+  background-image: url("../assets/kill.jpg");
+}
+
+.circles.enemyKilled {
+  background-image: url("../assets/enemyKilled.jpg");
+}

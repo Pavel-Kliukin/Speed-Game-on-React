@@ -8,19 +8,23 @@ import fromRussia from './assets/fromRussia.webp'
 import twoStanding from './assets/twoStanding.png'
 import topSecret from './assets/topSecret.png'
 
-function highliteCircle() {
-  console.log('Im here!');
-  return true
+function highliteCircle (prevHlCircleNumber) {
+  const randomNumber = Math.floor(Math.random() * 4 + 1)
+  if (prevHlCircleNumber === randomNumber) { // if random number is equal to the number of already highlighted circle
+    highliteCircle(prevHlCircleNumber) // then we choose another random number
+  } else {
+    return randomNumber
+  }
 }
 
 class App extends Component {
 
   state={
+    circles: [1,2,3,4],
+    lives_images: [1,2,3],
     start_button: true,
     abort_button: false,
     circlesClickPreventer: false,
-    circles: [1,2,3,4],
-    lives_images: [1,2,3],
     lives_left: 3,
     score: 0,
     hlCircleNumber: 0,
@@ -34,13 +38,18 @@ class App extends Component {
 
   newRound = (prevState) => {
     this.setState({
-      circlesClickPreventer: highliteCircle(),
+      circlesClickPreventer: false,
       start_button: false,
       abort_button: true,
+      hlCircleNumber: highliteCircle(prevState.hlCircleNumber),
       pace: prevState.pace - 30   
     })
 
-    // checking if there any lives left
+    let timerAim = setTimeout(() => {
+      console.log('timer');
+    }, this.pace / 2)
+
+    clearTimeout(timerAim)
 
     
   }
@@ -93,12 +102,21 @@ class App extends Component {
             </div>
           </div>
           <div id="circles_block">
-            {this.state.circles.map((circle)=>
-            <Circle
-              key={circle}
-              number={circle}
-            />
-            )}
+            {this.state.circles.map((circle)=> {
+              if (circle === this.state.hlCircleNumber) {
+                return <Circle
+                  key={circle}
+                  classes = 'circles stand'
+                />
+              } else {
+                return <Circle
+                  key={circle}
+                  classes = 'circles'
+                />
+              }
+
+              
+            })}
           </div>
           <div id="start_stop_button_block">
             {this.state.start_button && <button onClick={this.newRound}>Start mission</button>}

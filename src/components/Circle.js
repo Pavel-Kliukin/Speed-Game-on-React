@@ -4,7 +4,7 @@ import './Circle.css'
 const Circle = (props) => {
   return (
     <div>
-      <button className="circles" id="c1">{props.number}</button>
+      <button className={props.classes}>{props.number}</button>
     </div>
   );
 };
