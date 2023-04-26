@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css'
 import Circle from './components/Circle';
 import Lives from './components/Lives';
+import Modal from './components/Modal';
 
 // Images imports
 import img007 from './assets/007.png'
@@ -19,14 +20,25 @@ class App extends Component {
     circlesClickPreventer: false,
     lives_left: 3,
     score: 0,
-    activeCircle: 0,
-    activeClass: 'circle',
-    pace: 1300
+    activeCircle: 0, //active circle's number
+    activeClass: 'circle', // switches classes of circles in css
+    pace: 1300, // round's duration time
+    modalShow: false //shows at the end of the game
   }
 
   timerAim
   timerShot
-
+  
+  //GAME START (starts by Start button)
+  startGame = () => {
+    this.setState({
+      buttons_switcher: !this.state.buttons_switcher,
+    })
+    
+    this.newRound()
+  }
+  
+  // NEW ROUND
   newRound = () => {
     if (this.state.lives_left === 0) {
       return this.stopGame()
@@ -50,16 +62,39 @@ class App extends Component {
 
     this.timerShot = setTimeout(() => {
       this.deadState()
-      this.setState({
-        activeClass: 'circle shot'
-      })
     }, this.state.pace)
   }
 
+  //CIRCLE CLICKED
+  clickHandler = (clircleNumber) => {
+
+    clearTimeout(this.timerAim)
+    clearTimeout(this.timerShot)
+
+    if (clircleNumber === this.state.activeCircle) {
+      setTimeout(() => {
+        this.newRound()
+      }, 500) 
+      return (
+        this.setState({
+          score: this.state.score + 1,
+          activeClass: 'circle enemyKilled',
+          pace: this.state.pace - 30
+        })
+      )
+    } else {
+      return (
+        this.deadState()
+      )
+    }
+  }
+
+  //DEAD STATE
   deadState = () => {
     this.setState({
       circlesClickPreventer: true,
       lives_left: this.state.lives_left - 1,
+      activeClass: 'circle shot',
       pace: this.state.pace - 30
     })
 
@@ -70,21 +105,30 @@ class App extends Component {
       this.newRound()
     }, 1000)
   }
-  
-  startGame = () => {
-    this.setState({
-      buttons_switcher: !this.state.buttons_switcher,
-    })
-    
-    this.newRound()
-  }
 
   stopGame = () => {
+
     clearTimeout(this.timerAim)
     clearTimeout(this.timerShot)
+
     this.setState({
-      circlesClickPreventer: true
+      modalShow: true
     })
+  }
+
+  // GAME RESET
+  modalButtonHandler = () => {
+    this.setState({
+      buttons_switcher: true, // switches Start and Abort buttons
+      circlesClickPreventer: false,
+      lives_left: 3,
+      score: 0,
+      activeCircle: 0, //active circle's number
+      activeClass: 'circle', // switches classes of circles in css
+      pace: 1300, // round's duration time
+      modalShow: false //shows at the end of the game
+    })
+
   }
   
   render() {
@@ -139,15 +183,15 @@ class App extends Component {
                 return <Circle
                   key={circle}
                   classes = {this.state.activeClass}
+                  circleClicked = {() => this.clickHandler(circle)}
                 />
               } else {
                 return <Circle
                   key={circle}
                   classes = 'circle'
+                  circleClicked = {() => this.clickHandler(circle)}
                 />
-              }
-
-              
+              }   
             })}
           </div>
           <div id="start_stop_button_block">
@@ -168,6 +212,7 @@ class App extends Component {
           </div>
         </footer>
         {this.state.circlesClickPreventer && <div className="circlesClickPreventer"></div>}
+        {this.state.modalShow && <Modal btnClicked={this.modalButtonHandler}/>}
       </div>
     );
   }

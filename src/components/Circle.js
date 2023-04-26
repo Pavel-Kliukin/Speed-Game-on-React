@@ -5,7 +5,7 @@ const Circle = (props) => {
   
   return (
     <div>
-      <button className={props.classes}>{props.number}</button>
+      <button className={props.classes} onClick={props.circleClicked}></button>
     </div>
   );
 };
