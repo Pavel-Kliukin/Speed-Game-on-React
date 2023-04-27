@@ -11,11 +11,23 @@ import fromRussia from './assets/fromRussia.webp'
 import twoStanding from './assets/twoStanding.png'
 import topSecret from './assets/topSecret.png'
 
+// Sounds imports
+import JamesBondTheme from './assets/Sounds/JamesBondTheme.mp3'
+import silentShot from './assets/Sounds/SilentShot.mp3'
+import shot from './assets/Sounds/shot.mp3'
+
+const music = new Audio(JamesBondTheme)
+const silentShotSound = new Audio(silentShot)
+const shotSound = new Audio(shot)
+
+let musicOn = false
+
 class App extends Component {
 
   state={
     circles: [1,2,3,4],
     lives_images: [1,2,3],
+    soundsSwitcher: true,
     buttons_switcher: true, // switches Start and Abort buttons
     circlesClickPreventer: false,
     lives_left: 3,
@@ -26,13 +38,31 @@ class App extends Component {
     modalShow: false //shows at the end of the game
   }
 
+  musicOn = false
   timerAim
   timerShot
+
+  //MUSIC AND SOUNDS
+  musicHandler = () => {
+    musicOn = !musicOn
+    if (musicOn) {
+      music.play()
+      music.volume = 0.05
+    } else {
+      music.pause()
+    }
+
+  }
+  soundsHandler = () => {
+    this.setState({
+      soundsSwitcher: !this.state.soundsSwitcher
+    })
+  }
   
   //GAME START (starts by Start button)
   startGame = () => {
     this.setState({
-      buttons_switcher: !this.state.buttons_switcher,
+      buttons_switcher: !this.state.buttons_switcher
     })
     
     this.newRound()
@@ -40,7 +70,7 @@ class App extends Component {
   
   // NEW ROUND
   newRound = () => {
-    if (this.state.lives_left === 0) {
+    if (this.state.lives_left <= 0) {
       return this.stopGame()
     }
 
@@ -71,12 +101,26 @@ class App extends Component {
     clearTimeout(this.timerAim)
     clearTimeout(this.timerShot)
 
+    if (this.state.soundsSwitcher) {
+      silentShotSound.play()
+      silentShotSound.volume = 0.05
+
+      // the code below might be usefull in cases where the sound is long enough and the user clicks the button before the sound ends:
+     
+      // if (silentShotSound.paused) {
+      //   silentShotSound.play()
+      // } else {
+      //   silentShotSound.currentTime = 0;
+      // }
+    }
+
     if (clircleNumber === this.state.activeCircle) {
       setTimeout(() => {
         this.newRound()
       }, 500) 
       return (
         this.setState({
+          circlesClickPreventer: true,
           score: this.state.score + 1,
           activeClass: 'circle enemyKilled',
           pace: this.state.pace - 30
@@ -91,6 +135,12 @@ class App extends Component {
 
   //DEAD STATE
   deadState = () => {
+
+    if (this.state.soundsSwitcher) {
+      shotSound.play()
+      shotSound.volume = 0.05
+    }
+
     this.setState({
       circlesClickPreventer: true,
       lives_left: this.state.lives_left - 1,
@@ -164,14 +214,14 @@ class App extends Component {
               <div id="music">
                 Music:{'\u00A0'} {/* \u00A0 is for a space like &nbsp */}
                 <label className="switch">
-                  <input id="musicButton" type="checkbox"/>
+                  <input id="musicButton" type="checkbox" onChange={this.musicHandler}/>
                   <span className="slider"></span>
                 </label>
               </div>
               <div id="sounds">
                 Sounds:{'\u00A0'}
                 <label className="switch">
-                  <input id="soundButton" type="checkbox" defaultChecked/>
+                  <input id="soundButton" type="checkbox" onChange={this.soundsHandler} defaultChecked/>
                   <span className="slider"></span>
                 </label>
               </div>
