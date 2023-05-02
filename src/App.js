@@ -262,7 +262,9 @@ class App extends Component {
           </div>
         </footer>
         {this.state.circlesClickPreventer && <div className="circlesClickPreventer"></div>}
-        {this.state.modalShow && <Modal btnClicked={this.modalButtonHandler}/>}
+        {this.state.modalShow && <Modal 
+          score={this.state.score}
+          btnClicked={this.modalButtonHandler}/>}
       </div>
     );
   }
