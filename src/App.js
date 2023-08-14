@@ -96,7 +96,7 @@ class App extends Component {
   }
 
   //CIRCLE CLICKED
-  clickHandler = (clircleNumber) => {
+  clickHandler = (circleNumber) => {
 
     clearTimeout(this.timerAim)
     clearTimeout(this.timerShot)
@@ -114,7 +114,7 @@ class App extends Component {
       // }
     }
 
-    if (clircleNumber === this.state.activeCircle) {
+    if (circleNumber === this.state.activeCircle) {
       setTimeout(() => {
         this.newRound()
       }, 500) 

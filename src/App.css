@@ -251,3 +251,24 @@ footer {
   width: 100vw;
   opacity: 30%;
 }
+
+/* MEDIA */
+
+@media (max-width: 590px) {
+
+  #fromRussia {
+    width: 50vw;
+  }
+
+  footer {
+    height: 10vh;
+  }
+
+  #footerText {
+    font-size: 0.6rem;
+  }
+
+  #twoStanding {
+    margin-left: 0;
+  }
+}
