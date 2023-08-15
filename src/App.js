@@ -3,6 +3,7 @@ import './App.css'
 import Circle from './components/Circle';
 import Lives from './components/Lives';
 import Modal from './components/Modal';
+import ModalWin from './components/ModalWin';
 
 // Images imports
 import img007 from './assets/007.png'
@@ -35,7 +36,8 @@ class App extends Component {
     activeCircle: 0, //active circle's number
     activeClass: 'circle', // switches classes of circles in css
     pace: 1300, // round's duration time
-    modalShow: false //shows at the end of the game
+    modalShow: false, //shows at the end of the game
+    modalWinShow: false //shows at the end of the game
   }
 
   musicOn = false
@@ -70,7 +72,7 @@ class App extends Component {
   
   // NEW ROUND
   newRound = () => {
-    if (this.state.lives_left <= 0) {
+    if (this.state.lives_left <= 0 || this.state.score >= 5) {
       return this.stopGame()
     }
 
@@ -161,9 +163,15 @@ class App extends Component {
     clearTimeout(this.timerAim)
     clearTimeout(this.timerShot)
 
-    this.setState({
-      modalShow: true
-    })
+    if (this.state.score === 5){
+      this.setState({
+        modalWinShow: true
+      })
+    } else {
+      this.setState({
+        modalShow: true
+      })
+    }
   }
 
   // GAME RESET
@@ -176,7 +184,8 @@ class App extends Component {
       activeCircle: 0, //active circle's number
       activeClass: 'circle', // switches classes of circles in css
       pace: 1300, // round's duration time
-      modalShow: false //shows at the end of the game
+      modalShow: false, //shows at the end of the game
+      modalWinShow: false //shows at the end of the game
     })
 
   }
@@ -254,7 +263,7 @@ class App extends Component {
               <img id="twoStanding" className="footerImg" src={twoStanding} alt="Two standing"/>
             </div>
             <div id="footerTextCover">
-              <p id="footerText">Copyright © Made by Pavel Kliukin</p>
+              <p id="footerText">Made by Pavel Kliukin</p>
             </div>
             <div id="rightImgCover">
               <img id="topSecret" className="footerImg" src={topSecret} alt="Top Secret"/>
@@ -263,6 +272,9 @@ class App extends Component {
         </footer>
         {this.state.circlesClickPreventer && <div className="circlesClickPreventer"></div>}
         {this.state.modalShow && <Modal 
+          score={this.state.score}
+          btnClicked={this.modalButtonHandler}/>}
+        {this.state.modalWinShow && <ModalWin 
           score={this.state.score}
           btnClicked={this.modalButtonHandler}/>}
       </div>
