@@ -1,3 +1,14 @@
+.bigBox {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .overlay {
   background-color: #333;
   position: fixed;
@@ -15,7 +26,7 @@
   background-color: white;
   opacity: 1;
   color: #333;
-  height: 23vh;
+  height: 40vh;
   width: 40vw;
   padding: 2rem;
   border-radius: 5px;
@@ -39,75 +50,15 @@
   left: 2%;
 }
 
-#looser {
-  width: 100%;
-  height: 15%;
+#winGifBox {
+  height: 70%;
   display: flex;
   justify-content: center;
-  position: relative;
+  opacity: 1;
 }
-
-.looserImg {
-  max-height: 100%;
-  max-width: 30%;
+#winGif {
   display: flex;
-  object-fit: contain;
-}
-
-#fingerIMG {
-  font-family: 'Times New Roman', Times, serif;
-  font-size: 100%;
-  font-weight: bold;
-  font-style: italic;
-  max-width: 20%;
-  padding-right: 5px;
-  display: flex;
-  justify-content: flex-end;
-  align-items: start;
-}
-
-
-#serIMG,
-#fingerIMG {
-  opacity: 0;
-  animation-name: imgAppear;
-  animation-duration: 4s;
-  animation-fill-mode: forwards;
-}
-
-@keyframes imgAppear {
-  0% {
-    opacity: 0;
-  }
-
-  40% {
-    opacity: 0;
-  }
-
-  60% {
-    opacity: 0.3;
-  }
-
-  80% {
-    opacity: 0.7;
-  }
-
-  100% {
-    opacity: 1;
-  }
-}
-
-#looIMG {
-  animation: looRotate;
-  animation-duration: 2s;
-  animation-delay: 1s;
-  animation-fill-mode: forwards;
-}
-
-@keyframes looRotate {
-  to {
-    transform: rotate(180deg);
-  }
+  justify-content: center;
 }
 
 .btn {
@@ -124,7 +75,7 @@
 @media (max-width: 830px) {
 
   .modal {
-    height: 30vh;
+    height: 60vh;
     width: 84vw;
   }
 }
