@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css'
 import Circle from './components/Circle';
 import Lives from './components/Lives';
-import Modal from './components/Modal';
+import ModalLoose from './components/ModalLoose';
 import ModalWin from './components/ModalWin';
 
 // Images imports
@@ -36,7 +36,7 @@ class App extends Component {
     activeCircle: 0, //active circle's number
     activeClass: 'circle', // switches classes of circles in css
     pace: 1300, // round's duration time
-    modalShow: false, //shows at the end of the game
+    modalLooseShow: false, //shows at the end of the game
     modalWinShow: false //shows at the end of the game
   }
 
@@ -169,7 +169,7 @@ class App extends Component {
       })
     } else {
       this.setState({
-        modalShow: true
+        modalLooseShow: true
       })
     }
   }
@@ -184,7 +184,7 @@ class App extends Component {
       activeCircle: 0, //active circle's number
       activeClass: 'circle', // switches classes of circles in css
       pace: 1300, // round's duration time
-      modalShow: false, //shows at the end of the game
+      modalLooseShow: false, //shows at the end of the game
       modalWinShow: false //shows at the end of the game
     })
 
@@ -271,7 +271,7 @@ class App extends Component {
           </div>
         </footer>
         {this.state.circlesClickPreventer && <div className="circlesClickPreventer"></div>}
-        {this.state.modalShow && <Modal 
+        {this.state.modalLooseShow && <ModalLoose 
           score={this.state.score}
           btnClicked={this.modalButtonHandler}/>}
         {this.state.modalWinShow && <ModalWin 

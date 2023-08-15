@@ -1,5 +1,5 @@
 import React from 'react';
-import './Modal.css'
+import './ModalWin.css'
 
 // Images imports
 import fingerIMG from '../assets/finger.png'

@@ -1,5 +1,5 @@
 import React from 'react';
-import './Modal.css'
+import './ModalLoose.css'
 
 // Images imports
 import fingerIMG from '../assets/finger.png'
@@ -33,7 +33,7 @@ const text = (score) => {
    }
 }
 
-const Modal = (props) => {
+const ModalLoose = (props) => {
 
   
 
@@ -58,4 +58,4 @@ const Modal = (props) => {
   );
 };
 
-export default Modal;
+export default ModalLoose;
