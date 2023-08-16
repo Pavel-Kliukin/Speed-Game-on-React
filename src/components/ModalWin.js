@@ -3,24 +3,27 @@ import './ModalWin.css'
 
 // Images imports
 import winGif from '../assets/win.gif'
-import classified from '../assets/classified.png'
 
 const ModalWin = (props) => {
 
   
 
   return (
-    <div className='bigBox'>
-      <div className="overlay">
+    <div className='bigBoxWin'>
+      <div className="overlayWin">
       </div>
-      <div className="modal">
-        <h2 id="missionfailed">Mission completed!</h2>
-        <h2 id="yourScore">You win!</h2>
+      <div className="modalWin">
+        <h2 id="missioncompleted">Mission completed!</h2>
+        <h2 id="youWin">You win!</h2>
         <div id="winGifBox">
           <img id="winGif" src={winGif} alt="WinGif"/>
         </div>
         <button id="closeButton" className="btn" onClick={props.btnClicked}>x</button>
-        <img id="classified" src={classified} alt="Classified"/>
+        <form>
+          <label>Enter your name</label>
+          <input></input>
+          <button>Submit</button>
+        </form>
       </div>
     </div>
   );
