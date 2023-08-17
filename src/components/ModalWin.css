@@ -1,3 +1,7 @@
+:root {
+  --height: 70vh;
+}
+
 .bigBoxWin {
   position: fixed;
   top: 0;
@@ -26,24 +30,24 @@
   background-color: white;
   opacity: 1;
   color: #333;
-  height: 40vh;
-  width: 40vw;
-  /* padding: 2rem; */
+  height: var(--height);
+  width: calc(var(--height) * 0.6);
   border-radius: 5px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   position: relative;
   /*so the button could position itself*/
-  ;
 }
 
-#winGifBox {
-  height: 70%;
+.congrats {
+  margin-top: 1.5rem;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }
+
 #winGif {
   max-width: 100%;
   object-fit: contain;
@@ -60,24 +64,42 @@
   right: 0.5rem;
 }
 
+.buttomBox {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 100%;
+}
+
+.hands {
+  width: 30%;
+}
+
 form {
-  margin-top: 1rem;
+  margin-bottom: 1.5rem;
+  width: 40%;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+label {
+  margin-top: 1rem;
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+input {
+  height: 1.5rem;
+  max-width: 100%;
+  margin-top: 1rem;
 }
 
 form button {
   margin-top: 1rem;
   height: 1.5rem;
-  width: 5rem;
+  max-width: 5rem;
   border-radius: 5px;
   font-size: 0.8rem;
-}
-
-@media (max-width: 830px) {
-
-  .modalWin {
-    height: 60vh;
-    width: 84vw;
-  }
 }
