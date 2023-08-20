@@ -33,6 +33,9 @@
   height: var(--height);
   width: calc(var(--height) * 0.6);
   border-radius: 5px;
+  /* border-style: solid;
+  border-color: var(--color-red); */
+  border-width: 5px;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -51,6 +54,8 @@
 #winGif {
   max-width: 100%;
   object-fit: contain;
+  border-top: 5px solid var(--color-red);
+  border-bottom: 5px solid var(--color-red);
 }
 
 .btn {
@@ -102,4 +107,29 @@ form button {
   max-width: 5rem;
   border-radius: 5px;
   font-size: 0.8rem;
+}
+
+.modalWin2 {
+  background-color: white;
+  opacity: 1;
+  color: #333;
+  height: var(--height);
+  width: calc(var(--height) * 0.6);
+  border-radius: 5px;
+  /* border-style: solid;
+  border-color: var(--color-red); */
+  border-width: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  position: relative;
+  /*so the button could position itself*/
+}
+
+.sorryWeCant {
+  margin-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }

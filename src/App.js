@@ -275,7 +275,6 @@ class App extends Component {
           score={this.state.score}
           btnClicked={this.modalButtonHandler}/>}
         {this.state.modalWinShow && <ModalWin 
-          score={this.state.score}
           btnClicked={this.modalButtonHandler}/>}
       </div>
     );
