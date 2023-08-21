@@ -1,15 +1,22 @@
+import './WinPart2.css';
 import topSecret from '../assets/topSecret.png'
+import queen from '../assets/queen.png'
 
 const WinPart2 = (props) => {
 
   return (
-    <div className="modalWin2">
-        <div className='sorryWeCant'>
-          <h1 id="missioncompleted">Sorry!</h1>
-          <h2 id="youWin">We can't post your name, because this mission is</h2>
-        </div>
-        <img id="topSecretEnd" src={topSecret} alt="Top Secret"/>
+    <div className="WinPart2">
         <button id="closeButton" className="btn" onClick={props.btnClicked}>x</button>
+        <div className='sorryWeCant'>
+          <h1 id="Sorry">Sorry!</h1>
+          <h2 id="weCant">We can't post your name, because this mission is</h2>
+        </div>
+        <div className='topSecretEndBox'>
+          <img id="topSecretEnd" src={topSecret} alt="Top Secret"/>
+        </div>
+        <div className='queenBox'>
+          <img id="queen" src={queen} alt="Queen"/>
+        </div>
       </div>
   )
 }

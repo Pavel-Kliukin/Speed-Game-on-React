@@ -1,0 +1,98 @@
+.WinPart2 {
+  background-color: white;
+  opacity: 1;
+  color: #333;
+  height: var(--height);
+  width: calc(var(--height) * 0.6);
+  border-radius: 5px;
+  /* border-style: solid;
+  border-color: var(--color-red); */
+  border-width: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  /*so the button could position itself*/
+}
+
+.sorryWeCant {
+  margin: 1.5rem;
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+#weCant {
+  margin-top: 1rem;
+}
+
+#weCant {
+  animation: blur 2.7s ease;
+  animation-delay: -1.5s;
+}
+
+@keyframes blur {
+  0% {
+    filter: blur(80px);
+    /* color: rgb(244, 239, 239); */
+  }
+  100% {
+    filter: blur(0);
+  }
+}
+
+.topSecretEndBox {
+  width: 100%;
+  height: 40%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#topSecretEnd {
+  width: 0%;
+  max-width: 90%;
+  animation: sizeChange 2s cubic-bezier(0.68, -0.55, 0.27, 1.55) forwards;
+  animation-delay: 1s;
+}
+
+@keyframes sizeChange {
+  0% {
+    width: 0;
+    max-width: 0;
+  }
+  100% {
+    width: 90%;
+    max-width: 90%;
+  }
+}
+
+.queenBox {
+  width: 100%;
+  max-height: 20%;
+  display: flex;
+  justify-content: flex-end;
+  position: relative;
+  overflow: hidden;
+}
+
+#queen {
+  /* position: sticky; */
+  bottom: 0;
+  transform: translateX(-50%) translateY(100%); /* Initial position below the parent */
+  animation: slideUp 2s ease-in-out forwards;
+  animation-delay: 3s;
+}
+
+@keyframes slideUp {
+  0% {
+    transform: translateY(100%);
+  }
+  100% {
+    transform: translateY(0); /* Slide image up to the top */
+  }
+}

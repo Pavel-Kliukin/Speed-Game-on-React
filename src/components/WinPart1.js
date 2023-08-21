@@ -1,3 +1,5 @@
+import './WinPart1.css';
+
 import winGif from '../assets/win.gif'
 import leftClapingHands from '../assets/LClapingHands.gif'
 import rightClapingHands from '../assets/RClapingHands.gif'
@@ -5,7 +7,7 @@ import rightClapingHands from '../assets/RClapingHands.gif'
 const WinPart1 = (props) => {
 
   return (
-    <div className="modalWin">
+    <div className="WinPart1">
       <div className='congrats'>
         <h2 id="missioncompleted">Mission completed!</h2>
         <h2 id="youWin">You win!</h2>

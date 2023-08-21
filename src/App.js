@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css'
 import Circle from './components/Circle';
 import Lives from './components/Lives';
-import ModalLoose from './components/ModalLoose';
+import ModalLose from './components/ModalLose';
 import ModalWin from './components/ModalWin';
 
 // Images imports
@@ -72,7 +72,7 @@ class App extends Component {
   
   // NEW ROUND
   newRound = () => {
-    if (this.state.lives_left <= 0 || this.state.score >= 5) {
+    if (this.state.lives_left <= 0 || this.state.score >= 2) {
       return this.stopGame()
     }
 
@@ -163,7 +163,7 @@ class App extends Component {
     clearTimeout(this.timerAim)
     clearTimeout(this.timerShot)
 
-    if (this.state.score === 5){
+    if (this.state.score === 2){
       this.setState({
         modalWinShow: true
       })
@@ -271,7 +271,7 @@ class App extends Component {
           </div>
         </footer>
         {this.state.circlesClickPreventer && <div className="circlesClickPreventer"></div>}
-        {this.state.modalLooseShow && <ModalLoose 
+        {this.state.modalLooseShow && <ModalLose 
           score={this.state.score}
           btnClicked={this.modalButtonHandler}/>}
         {this.state.modalWinShow && <ModalWin 

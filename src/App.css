@@ -73,7 +73,7 @@ main {
 
 .verticalLine {
   width: 3px;
-  height: 4rem;
+  height: 72px;
   border: 1px;
   border-style: solid;
   background-color: var(--color-red);
