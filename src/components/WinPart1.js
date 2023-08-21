@@ -2,11 +2,7 @@ import winGif from '../assets/win.gif'
 import leftClapingHands from '../assets/LClapingHands.gif'
 import rightClapingHands from '../assets/RClapingHands.gif'
 
-const WinPart1 = () => {
-
-  const submitHandler = () => {
-    
-  }
+const WinPart1 = (props) => {
 
   return (
     <div className="modalWin">
@@ -17,7 +13,7 @@ const WinPart1 = () => {
       <img id="winGif" src={winGif} alt="WinGif"/>
       <div className='buttomBox'>
         <img className='hands' id="leftClapingHands" src={leftClapingHands} alt="leftClapingHands"/>
-        <form onSubmit={submitHandler}>
+        <form onSubmit={props.submitClicked}>
             <label>Enter your name:</label>
             <input type="text" required></input>
           <button>Submit</button>
