@@ -3,7 +3,7 @@
   opacity: 1;
   color: #333;
   height: var(--height);
-  width: calc(var(--height) * 0.6);
+  width: calc(var(--height) * 0.55);
   border-radius: 5px;
   /* border-style: solid;
   border-color: var(--color-red); */

@@ -3,7 +3,7 @@
   opacity: 1;
   color: #333;
   height: var(--height);
-  width: calc(var(--height) * 0.6);
+  width: calc(var(--height) * 0.55);
   border-radius: 5px;
   /* border-style: solid;
   border-color: var(--color-red); */
@@ -90,4 +90,34 @@ form button {
   max-width: 5rem;
   border-radius: 5px;
   font-size: 0.8rem;
+}
+
+@media (max-height: 650px) {
+
+  .congrats h2 {
+    font-size: 1rem;
+  }
+}
+@media (max-height: 500px) {
+
+  .congrats h2 {
+    font-size: 0.6rem;
+  }
+
+  .WinPart1 {
+    height: calc(var(--height)+70px);
+    max-height: 100vh;
+    width: calc((var(--height)) * 0.6);
+  }
+
+  label {
+    font-size: 0.6rem;
+  }
+
+  form button {
+    height: 1.5rem;
+    width: 5rem;
+    border-radius: 3px;
+    font-size: 0.8rem;
+  }
 }
