@@ -1,6 +1,7 @@
 import './WinPart2.css';
 import topSecret from '../assets/topSecret.png'
 import queen from '../assets/queen.png'
+import bye from '../assets/bye.png'
 
 const WinPart2 = (props) => {
 
@@ -15,7 +16,12 @@ const WinPart2 = (props) => {
           <img id="topSecretEnd" src={topSecret} alt="Top Secret"/>
         </div>
         <div className='queenBox'>
-          <img id="queen" src={queen} alt="Queen"/>
+          <div className='byeBox'>
+            <img id="bye" src={bye} alt="Bye"/>
+          </div>
+          <div className='queenBox2'>
+            <img id="queen" src={queen} alt="Queen"/>
+          </div>
         </div>
       </div>
   )

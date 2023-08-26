@@ -2,7 +2,7 @@
   background-color: white;
   opacity: 1;
   color: #333;
-  height: var(--height);
+  height: calc(var(--height) - 100px);
   width: calc(var(--height) * 0.55);
   border-radius: 5px;
   /* border-style: solid;
@@ -17,7 +17,7 @@
 }
 
 .sorryWeCant {
-  margin: 1.5rem;
+  margin: 0 1.5rem;
   margin-top: 2rem;
   display: flex;
   flex-direction: column;
@@ -80,10 +80,45 @@
   overflow: hidden;
 }
 
+.byeBox {
+  width: 25%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+}
+
+#bye {
+  object-fit: contain;
+  max-width: 80%;
+  max-height: 80%;
+  transform: translateX(100%);
+  animation: bye_slideUp 1s ease-in-out forwards;
+  animation-delay: 5s;
+}
+
+@keyframes bye_slideUp {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(0); /* Slide image up to the top */
+  }
+}
+
+.queenBox2 {
+  background-color: white;
+  width: 25%;
+  max-height: 100%;
+  display: flex;
+  justify-content: flex-end;
+  position: relative;
+  overflow: hidden;
+}
+
 #queen {
   /* position: sticky; */
-  bottom: 0;
-  transform: translateX(-50%) translateY(100%); /* Initial position below the parent */
+  /* bottom: 0; */
+  transform: translateY(100%); /* Initial position below the parent */
   animation: slideUp 2s ease-in-out forwards;
   animation-delay: 3s;
 }

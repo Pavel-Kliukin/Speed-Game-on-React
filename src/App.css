@@ -205,7 +205,7 @@ footer {
 
 #leftImgCover,
 #rightImgCover {
-  width: 30vw;
+  width: 28vw;
   max-height: 100%;
   display: flex;
 }
@@ -219,7 +219,7 @@ footer {
 }
 
 #footerTextCover {
-  width: 40vw;
+  width: 44vw;
   display: flex;
   justify-content: center;
   align-items: flex-end;
@@ -265,7 +265,7 @@ footer {
   }
 
   #footerText {
-    font-size: 0.85rem;
+    font-size: 0.90rem;
   }
 
   #twoStanding {
