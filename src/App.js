@@ -8,7 +8,7 @@ import ModalWin from './components/ModalWin';
 // Images imports
 import img007 from './assets/007.png'
 import twoShooting from './assets/twoShooting.png'
-import fromRussia from './assets/fromRussia.webp'
+import fromRussia from './assets/fromRussia.png'
 import twoStanding from './assets/twoStanding.png'
 import topSecret from './assets/topSecret.png'
 
