@@ -163,7 +163,7 @@ class App extends Component {
     clearTimeout(this.timerAim)
     clearTimeout(this.timerShot)
 
-    if (this.state.score === 2){
+    if (this.state.score === 30){
       this.setState({
         modalWinShow: true
       })

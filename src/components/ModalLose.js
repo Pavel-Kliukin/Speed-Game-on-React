@@ -37,7 +37,7 @@ const text = (score) => {
    } else if ((10 < score && score <= 20)) {
     return less20[Math.floor(Math.random() * less20.length)]
    } else if ((score < 30)) {
-    return less20[Math.floor(Math.random() * less30.length)]
+    return less30[Math.floor(Math.random() * less30.length)]
    }
 }
   
