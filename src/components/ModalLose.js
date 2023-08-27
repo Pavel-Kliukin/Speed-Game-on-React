@@ -18,12 +18,17 @@ const less10 = [
 ]
 const less20 = [
   'You are good, but can be better!',
-  'Try one more time'
+  'Try one more time',
+  "Don't give up! Try again!",
 ]
 const less30 = [
-  'You almost done it!',
+  'You almost did it!',
   'You were so close to win!',
-  'The final boss killed you :)'
+  'The final boss killed you :)',
+  'Focus! Try again!',
+  'Better luck next time',
+  'Almost won!',
+  'You need 30 points, remember?!'
 ]
 
 const text = (score) => {
@@ -37,7 +42,7 @@ const text = (score) => {
 }
   
   return (
-    <div className='bigBoxWin'>
+    <div className='bigBox'>
       <div className="overlay"></div>
       <div className="modal">
         <button id="closeButton" className="btn" onClick={props.btnClicked}>x</button>

@@ -14,7 +14,7 @@ const ModalWin = (props) => {
   }
 
   return (
-    <div className='bigBoxWin'>
+    <div className='bigBox'>
       <div className="overlayWin"></div>
 
       {/* This part comes first and suggests user to input his name */}

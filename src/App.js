@@ -72,7 +72,7 @@ class App extends Component {
   
   // NEW ROUND
   newRound = () => {
-    if (this.state.lives_left <= 0 || this.state.score >= 2) {
+    if (this.state.lives_left <= 0 || this.state.score >= 30) {
       return this.stopGame()
     }
 
