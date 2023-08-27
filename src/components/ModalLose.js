@@ -1,12 +1,15 @@
 import React from 'react';
-import './ModalLose.css'
+import './ModalLose.css';
 
 // Images imports
-import fingerIMG from '../assets/finger.png'
-import looIMG from '../assets/007loose.png'
-import serIMG from '../assets/SER.png'
-import classified from '../assets/classified.png'
+import classified from '../assets/classified.png';
+import { Blood } from './Blood.js';
+import { Looser } from './Looser';
 
+
+const ModalLose = (props) => {
+
+  // Messages for loosers
 const less10 = [
   'Is that all you can?',
   'You are an easy target!',
@@ -32,29 +35,25 @@ const text = (score) => {
     return less20[Math.floor(Math.random() * less30.length)]
    }
 }
-
-const ModalLose = (props) => {
-
   
-
   return (
-    <div className="overlay">
-    <div className="modal">
-      <h2 id="missionfailed">Mission failed</h2>
-      {/* <p>You need 30 points to win</p> */}
-      <h2 id="yourScore">Your score: {props.score}</h2>
-      <p>
-        {text(props.score)}
-      </p>
-      <div id="looser">
-        <img className="looserImg" id="fingerIMG" src={fingerIMG} alt="Finger"/>
-        <img className="looserImg" id="looIMG" src={looIMG} alt="loo"/>
-        <img className="looserImg" id="serIMG" src={serIMG} alt="ser"/>
+    <div className='bigBoxWin'>
+      <div className="overlay"></div>
+      <div className="modal">
+        <button id="closeButton" className="btn" onClick={props.btnClicked}>x</button>
+        <img id="classified" src={classified} alt="Classified"/>
+        <div className='textBox'>
+          <h2 id="missionfailed">Mission failed</h2>
+          {/* <p>You need 30 points to win</p> */}
+          <h2 id="yourScore">Your score: {props.score}</h2>
+          <p>
+            {text(props.score)}
+          </p>
+        </div>
+        {/* Randomly addes Looser or Blood modules */}
+        {Math.floor(Math.random() * 2) ? <Looser /> : <Blood />}
       </div>
-      <button id="closeButton" className="btn" onClick={props.btnClicked}>x</button>
-      <img id="classified" src={classified} alt="Classified"/>
     </div>
-  </div>
   );
 };
 

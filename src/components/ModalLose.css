@@ -28,8 +28,17 @@
   ;
 }
 
+.textBox{
+  display: flex;
+  flex-direction: column;
+}
+
 #missionfailed {
-  z-index: 1;
+  margin-bottom: 1rem;
+}
+
+#yourScore {
+  margin-bottom: 1rem;
 }
 
 #classified {
@@ -119,6 +128,28 @@
   box-shadow: none;
   top: 0.5rem;
   right: 0.5rem;
+}
+
+#blood {
+  position: absolute;
+  /* opacity: 0; */
+  bottom: 0;
+  left: 0; 
+  width: 100%;
+  z-index: 1;
+  animation: bloodAppear;
+  animation-duration: 4s;
+  /* animation-delay: 1s; */
+}
+
+@keyframes bloodAppear {
+  0% {
+    opacity: 0;
+  }
+  
+  100% {
+    opacity: 1;
+  }
 }
 
 @media (max-width: 830px) {
