@@ -45,18 +45,20 @@ const text = (score) => {
   
   return (
       <ModalBox>
-        <button id="closeButton" className="btn" onClick={props.btnClicked}>x</button>
-        <img id="classified" src={classified} alt="Classified"/>
-        <div className='textBox'>
-          <h2 id="missionfailed">Mission failed</h2>
-          {/* <p>You need 30 points to win</p> */}
-          <h2 id="yourScore">Your score: {props.score}</h2>
-          <p>
-            {text(props.score)}
-          </p>
+        <div className='modal'>
+          <button id="closeButton" className="btn" onClick={props.btnClicked}>x</button>
+          <img id="classified" src={classified} alt="Classified"/>
+          <div className='textBox'>
+            <h2 id="missionfailed">Mission failed</h2>
+            {/* <p>You need 30 points to win</p> */}
+            <h2 id="yourScore">Your score: {props.score}</h2>
+            <p>
+              {text(props.score)}
+            </p>
+          </div>
+          {/* Randomly addes Looser or Blood modules */}
+          {Math.floor(Math.random() * 2) ? <Looser /> : <Blood />}
         </div>
-        {/* Randomly addes Looser or Blood modules */}
-        {Math.floor(Math.random() * 2) ? <Looser /> : <Blood />}
       </ModalBox>
   );
 };

@@ -1,6 +1,7 @@
 :root {
   --color-red: rgb(194, 42, 42);
   --switch-width: 30px;
+  --height: 75vh;
 }
 
 * {
