@@ -1,4 +1,4 @@
-import './WinPart2.css';
+import './css/WinPart2.css';
 import topSecret from '../assets/topSecret.png'
 import queen from '../assets/queen.png'
 import bye from '../assets/bye.png'

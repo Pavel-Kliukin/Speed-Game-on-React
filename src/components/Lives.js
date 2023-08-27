@@ -1,5 +1,5 @@
 import React from 'react';
-import './Lives.css'
+import './css/Lives.css'
 import alive from '../assets/alive.png'
 import dead from '../assets/dead.png'
 

@@ -1,4 +1,5 @@
 import React from 'react';
+import './css/Looser.css';
 import fingerIMG from '../assets/finger.png'
 import looIMG from '../assets/007loose.png'
 import serIMG from '../assets/SER.png'

@@ -1,5 +1,6 @@
 import React from 'react';
-import './ModalLose.css';
+import './css/LoseAlert.css';
+import { ModalBox } from './ModalBox';
 
 // Images imports
 import classified from '../assets/classified.png';
@@ -7,7 +8,7 @@ import { Blood } from './Blood.js';
 import { Looser } from './Looser';
 
 
-const ModalLose = (props) => {
+const LoseAlert = (props) => {
 
   // Messages for loosers
 const less10 = [
@@ -17,9 +18,10 @@ const less10 = [
   'Are you the real James Bond?!'
 ]
 const less20 = [
-  'You are good, but can be better!',
+  'You are good, but could be better!',
   'Try one more time',
   "Don't give up! Try again!",
+  'Sorry, you lose!'
 ]
 const less30 = [
   'You almost did it!',
@@ -42,9 +44,7 @@ const text = (score) => {
 }
   
   return (
-    <div className='bigBox'>
-      <div className="overlay"></div>
-      <div className="modal">
+      <ModalBox>
         <button id="closeButton" className="btn" onClick={props.btnClicked}>x</button>
         <img id="classified" src={classified} alt="Classified"/>
         <div className='textBox'>
@@ -57,9 +57,8 @@ const text = (score) => {
         </div>
         {/* Randomly addes Looser or Blood modules */}
         {Math.floor(Math.random() * 2) ? <Looser /> : <Blood />}
-      </div>
-    </div>
+      </ModalBox>
   );
 };
 
-export default ModalLose;
+export {LoseAlert};

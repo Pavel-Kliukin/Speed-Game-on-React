@@ -1,5 +1,5 @@
 .circle {
-  background-image: url("../assets/empty.jpg");
+  background-image: url("../../assets/empty.jpg");
   background-size: cover;
   height: 12.2vw;
   width: 19vw;
@@ -8,19 +8,19 @@
 }
 
 .circle.stand {
-  background-image: url("../assets/stand.jpg");
+  background-image: url("../../assets/stand.jpg");
 }
 
 .circle.aim {
-  background-image: url("../assets/aim.jpg");
+  background-image: url("../../assets/aim.jpg");
 }
 
 .circle.shot {
-  background-image: url("../assets/kill.jpg");
+  background-image: url("../../assets/kill.jpg");
 }
 
 .circle.enemyKilled {
-  background-image: url("../assets/enemyKilled.jpg");
+  background-image: url("../../assets/enemyKilled.jpg");
 }
 
 /* MEDIA */

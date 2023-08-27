@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import './ModalWin.css';
 import WinPart1 from './WinPart1';
 import WinPart2 from './WinPart2';
+import { ModalBox } from './ModalBox';
 
-const ModalWin = (props) => {
+const WinAlert = (props) => {
   const [modalWin, setModalWin] = useState(true)
   const [modalWin2, setModalWin2] = useState(false)
   
@@ -14,16 +14,13 @@ const ModalWin = (props) => {
   }
 
   return (
-    <div className='bigBox'>
-      <div className="overlayWin"></div>
-
+    <ModalBox>
       {/* This part comes first and suggests user to input his name */}
       {modalWin && <WinPart1 submitClicked={submitHandler} btnClicked={props.btnClicked}/>}
       {/* This part comes next */}
       {modalWin2 && <WinPart2 btnClicked={props.btnClicked}/>}
-
-    </div>
+    </ModalBox>
   );
 };
 
-export default ModalWin;
+export {WinAlert};

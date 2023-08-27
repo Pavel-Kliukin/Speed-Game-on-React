@@ -1,4 +1,4 @@
-import './WinPart1.css';
+import './css/WinPart1.css';
 
 import winGif from '../assets/win.gif'
 import leftClapingHands from '../assets/LClapingHands.gif'

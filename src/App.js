@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import './App.css'
 import Circle from './components/Circle';
 import Lives from './components/Lives';
-import ModalLose from './components/ModalLose';
-import ModalWin from './components/ModalWin';
+import {LoseAlert} from './components/LoseAlert';
+import {WinAlert} from './components/WinAlert';
 
 // Images imports
 import img007 from './assets/007.png'
@@ -36,7 +36,7 @@ class App extends Component {
     activeCircle: 0, //active circle's number
     activeClass: 'circle', // switches classes of circles in css
     pace: 1300, // round's duration time
-    modalLooseShow: false, //shows at the end of the game
+    modalLoseShow: false, //shows at the end of the game
     modalWinShow: false //shows at the end of the game
   }
 
@@ -72,7 +72,7 @@ class App extends Component {
   
   // NEW ROUND
   newRound = () => {
-    if (this.state.lives_left <= 0 || this.state.score >= 30) {
+    if (this.state.lives_left <= 0 || this.state.score >= 2) {
       return this.stopGame()
     }
 
@@ -163,13 +163,13 @@ class App extends Component {
     clearTimeout(this.timerAim)
     clearTimeout(this.timerShot)
 
-    if (this.state.score === 30){
+    if (this.state.score === 2){
       this.setState({
         modalWinShow: true
       })
     } else {
       this.setState({
-        modalLooseShow: true
+        modalLoseShow: true
       })
     }
   }
@@ -184,7 +184,7 @@ class App extends Component {
       activeCircle: 0, //active circle's number
       activeClass: 'circle', // switches classes of circles in css
       pace: 1300, // round's duration time
-      modalLooseShow: false, //shows at the end of the game
+      modalLoseShow: false, //shows at the end of the game
       modalWinShow: false //shows at the end of the game
     })
 
@@ -270,11 +270,15 @@ class App extends Component {
             </div>
           </div>
         </footer>
+        
+        {/* Circles click preventer (empty div on the hole screen) */}
         {this.state.circlesClickPreventer && <div className="circlesClickPreventer"></div>}
-        {this.state.modalLooseShow && <ModalLose 
+        
+        {/* Modal alerts */}
+        {this.state.modalLoseShow && <LoseAlert 
           score={this.state.score}
           btnClicked={this.modalButtonHandler}/>}
-        {this.state.modalWinShow && <ModalWin 
+        {this.state.modalWinShow && <WinAlert 
           btnClicked={this.modalButtonHandler}/>}
       </div>
     );

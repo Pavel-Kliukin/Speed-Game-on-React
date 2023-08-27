@@ -1,4 +1,5 @@
 import React from 'react';
+import './css/Blood.css';
 import blood from '../assets/blood.png'
 
 const Blood = () => {

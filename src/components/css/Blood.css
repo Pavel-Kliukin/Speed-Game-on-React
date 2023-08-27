@@ -1,0 +1,19 @@
+#blood {
+  position: absolute;
+  bottom: 0;
+  left: 0; 
+  width: 100%;
+  z-index: 1;
+  animation: bloodAppear;
+  animation-duration: 4s;
+}
+
+@keyframes bloodAppear {
+  0% {
+    opacity: 0;
+  }
+  
+  100% {
+    opacity: 1;
+  }
+}
