@@ -30,7 +30,7 @@ class App extends Component {
     lives_images: [1,2,3],
     soundsSwitcher: true,
     buttons_switcher: true, // switches Start and Abort buttons
-    circlesClickPreventer: false,
+    circlesClickPreventer: true,
     lives_left: 3,
     score: 0,
     activeCircle: 0, //active circle's number
@@ -178,7 +178,7 @@ class App extends Component {
   modalButtonHandler = () => {
     this.setState({
       buttons_switcher: true, // switches Start and Abort buttons
-      circlesClickPreventer: false,
+      circlesClickPreventer: true,
       lives_left: 3,
       score: 0,
       activeCircle: 0, //active circle's number
@@ -237,6 +237,8 @@ class App extends Component {
             </div>
           </div>
           <div id="circles_block">
+            {/* Circles click preventer (empty div on the hole screen) */}
+            {this.state.circlesClickPreventer && <div className="circlesClickPreventer"></div>}
             {this.state.circles.map((circle)=> {
               if (circle === this.state.activeCircle) {
                 return <Circle
@@ -249,8 +251,8 @@ class App extends Component {
                   key={circle}
                   classes = 'circle'
                   circleClicked = {() => this.clickHandler(circle)}
-                />
-              }   
+                  />
+                }   
             })}
           </div>
           <div id="start_stop_button_block">
@@ -271,8 +273,6 @@ class App extends Component {
           </div>
         </footer>
         
-        {/* Circles click preventer (empty div on the hole screen) */}
-        {this.state.circlesClickPreventer && <div className="circlesClickPreventer"></div>}
         
         {/* Modal alerts */}
         {this.state.modalLoseShow && <LoseAlert 
