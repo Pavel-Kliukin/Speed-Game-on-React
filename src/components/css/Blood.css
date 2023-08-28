@@ -4,8 +4,8 @@
   left: 0; 
   width: 100%;
   z-index: 1;
-  animation: bloodAppear;
-  animation-duration: 5s;
+  opacity: 0;
+  animation: bloodAppear 5s 1.5s forwards;
 }
 
 @keyframes bloodAppear {
