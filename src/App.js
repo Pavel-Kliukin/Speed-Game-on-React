@@ -32,7 +32,7 @@ class App extends Component {
     buttons_switcher: true, // switches Start and Abort buttons
     circlesClickPreventer: true,
     lives_left: 3,
-    score: 30,
+    enemies: 30,
     activeCircle: 0, //active circle's number
     activeClass: 'circle', // switches classes of circles in css
     pace: 1300, // round's duration time
@@ -72,7 +72,7 @@ class App extends Component {
   
   // NEW ROUND
   newRound = () => {
-    if (this.state.lives_left <= 0 || this.state.score === 0) {
+    if (this.state.lives_left <= 0 || this.state.enemies === 0 || this.state.modalLoseShow) {
       return this.stopGame()
     }
 
@@ -123,7 +123,7 @@ class App extends Component {
       return (
         this.setState({
           circlesClickPreventer: true,
-          score: this.state.score - 1,
+          enemies: this.state.enemies - 1,
           activeClass: 'circle enemyKilled',
           pace: this.state.pace - 30
         })
@@ -149,7 +149,7 @@ class App extends Component {
       activeClass: 'circle shot',
       pace: this.state.pace - 30
     })
-
+    
     setTimeout(() => {
       this.setState({
         activeClass: 'circle'
@@ -163,7 +163,7 @@ class App extends Component {
     clearTimeout(this.timerAim)
     clearTimeout(this.timerShot)
 
-    if (this.state.score === 0){
+    if (this.state.enemies === 0){
       this.setState({
         modalWinShow: true
       })
@@ -180,7 +180,7 @@ class App extends Component {
       buttons_switcher: true, // switches Start and Abort buttons
       circlesClickPreventer: true,
       lives_left: 3,
-      score: 30,
+      enemies: 30,
       activeCircle: 0, //active circle's number
       activeClass: 'circle', // switches classes of circles in css
       pace: 1300, // round's duration time
@@ -215,8 +215,8 @@ class App extends Component {
               </div>
             </div>
             <div className="verticalLine"></div>
-            <div id="score">
-              Enemies: {this.state.score}
+            <div id="enemies">
+              Enemies: {this.state.enemies}
             </div>
             <div className="verticalLine"></div>
             <div id="soundsControl">
@@ -276,7 +276,7 @@ class App extends Component {
         
         {/* Modal alerts */}
         {this.state.modalLoseShow && <LoseAlert 
-          score={this.state.score}
+          enemies={this.state.enemies}
           btnClicked={this.modalButtonHandler}/>}
         {this.state.modalWinShow && <WinAlert 
           btnClicked={this.modalButtonHandler}/>}

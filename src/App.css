@@ -93,7 +93,7 @@ main {
   max-height: 40px;
 }
 
-#score {
+#enemies {
   display: flex;
   justify-content: center;
   align-items: center;

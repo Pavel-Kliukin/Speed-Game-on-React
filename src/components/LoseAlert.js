@@ -11,7 +11,7 @@ import { Looser } from './Looser';
 const LoseAlert = (props) => {
 
   // Messages for loosers
-const less10 = [
+const less30 = [
   'Is that all you can?',
   'You are an easy target!',
   'Try harder!',
@@ -23,23 +23,22 @@ const less20 = [
   "Don't give up! Try again!",
   'Sorry, you lose!'
 ]
-const less30 = [
+const less10 = [
   'You almost did it!',
   'You were so close to win!',
   'The final boss killed you :)',
   'Focus! Try again!',
   'Better luck next time',
   'Almost won!',
-  'You need 30 points, remember?!'
 ]
 
-const text = (score) => {
-  if (20 <= score && score <= 30){
-    return less10[Math.floor(Math.random() * less10.length)]
-   } else if ((10 <= score && score < 20)) {
-    return less20[Math.floor(Math.random() * less20.length)]
-   } else if ((score < 10)) {
+const text = (enemies) => {
+  if (20 <= enemies && enemies <= 30){
     return less30[Math.floor(Math.random() * less30.length)]
+   } else if ((10 <= enemies && enemies < 20)) {
+    return less20[Math.floor(Math.random() * less20.length)]
+   } else if ((enemies < 10)) {
+    return less10[Math.floor(Math.random() * less10.length)]
    }
 }
   
@@ -50,9 +49,9 @@ const text = (score) => {
           <img id="classified" src={classified} alt="Classified"/>
           <div className='textBox'>
             <h2 id="missionfailed">Mission failed</h2>
-            <h2 id="yourScore">Enemies left: {props.score}</h2>
+            <h2 id="yourenemies">Enemies left: {props.enemies}</h2>
             <p>
-              {text(props.score)}
+              {text(props.enemies)}
             </p>
           </div>
           {/* Randomly addes Looser or Blood modules */}
