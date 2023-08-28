@@ -79,7 +79,7 @@ main {
   border-style: solid;
   background-color: var(--color-red);
   border-color: var(--color-red);
-  margin: 0 1rem;
+  margin: 0 0.6rem;
 }
 
 #livesBox {

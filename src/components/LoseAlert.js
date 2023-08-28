@@ -34,11 +34,11 @@ const less30 = [
 ]
 
 const text = (score) => {
-  if (score <= 10){
+  if (20 <= score && score <= 30){
     return less10[Math.floor(Math.random() * less10.length)]
-   } else if ((10 < score && score <= 20)) {
+   } else if ((10 <= score && score < 20)) {
     return less20[Math.floor(Math.random() * less20.length)]
-   } else if ((score < 30)) {
+   } else if ((score < 10)) {
     return less30[Math.floor(Math.random() * less30.length)]
    }
 }
@@ -50,8 +50,7 @@ const text = (score) => {
           <img id="classified" src={classified} alt="Classified"/>
           <div className='textBox'>
             <h2 id="missionfailed">Mission failed</h2>
-            {/* <p>You need 30 points to win</p> */}
-            <h2 id="yourScore">Your score: {props.score}</h2>
+            <h2 id="yourScore">Enemies left: {props.score}</h2>
             <p>
               {text(props.score)}
             </p>

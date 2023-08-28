@@ -32,7 +32,7 @@ class App extends Component {
     buttons_switcher: true, // switches Start and Abort buttons
     circlesClickPreventer: true,
     lives_left: 3,
-    score: 0,
+    score: 30,
     activeCircle: 0, //active circle's number
     activeClass: 'circle', // switches classes of circles in css
     pace: 1300, // round's duration time
@@ -72,7 +72,7 @@ class App extends Component {
   
   // NEW ROUND
   newRound = () => {
-    if (this.state.lives_left <= 0 || this.state.score >= 2) {
+    if (this.state.lives_left <= 0 || this.state.score === 0) {
       return this.stopGame()
     }
 
@@ -123,7 +123,7 @@ class App extends Component {
       return (
         this.setState({
           circlesClickPreventer: true,
-          score: this.state.score + 1,
+          score: this.state.score - 1,
           activeClass: 'circle enemyKilled',
           pace: this.state.pace - 30
         })
@@ -163,7 +163,7 @@ class App extends Component {
     clearTimeout(this.timerAim)
     clearTimeout(this.timerShot)
 
-    if (this.state.score === 2){
+    if (this.state.score === 0){
       this.setState({
         modalWinShow: true
       })
@@ -180,7 +180,7 @@ class App extends Component {
       buttons_switcher: true, // switches Start and Abort buttons
       circlesClickPreventer: true,
       lives_left: 3,
-      score: 0,
+      score: 30,
       activeCircle: 0, //active circle's number
       activeClass: 'circle', // switches classes of circles in css
       pace: 1300, // round's duration time
@@ -216,7 +216,7 @@ class App extends Component {
             </div>
             <div className="verticalLine"></div>
             <div id="score">
-              Score: {this.state.score}
+              Enemies: {this.state.score}
             </div>
             <div className="verticalLine"></div>
             <div id="soundsControl">
