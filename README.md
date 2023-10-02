@@ -1,6 +1,6 @@
 # Speed Game on React
 
-This is my modification of a popular offline game in Finland named Speed Game.
+This is my modification of a popular offline game in Finland called Speed Game.
 
 I made it with the James Bond theme.
 
